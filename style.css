@@ -14,23 +14,20 @@ button {
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
-    max-height: 1000px; 
+    max-height: 700px; 
+    
 }
 
 .rows {
     display: flex;
     flex-direction: row;
-    flex-shrink: 1;
     flex-basis: 50px;
-    
+    justify-content: center; 
 }
 
 
-#container > .rows > div {
-    border: 2px solid black;
-    flex-shrink: 1;
-    flex-basis: 46px;   
+#container > .rows > div {    
+    flex-basis: 50px;   
 }
 
 
