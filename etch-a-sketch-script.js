@@ -21,15 +21,18 @@ button.addEventListener('click', () => {
     }
     container.style.maxWidth = '700px';
     container.style.maxWidth = '700px';
-
     container.style.border = "2px solid black";
-    let firstColor = Math.floor(Math.random() * 254);
-    let secondColor = Math.floor(Math.random() * 254);
-    let thirdColor = Math.floor(Math.random() * 254);
     
-    document.querySelectorAll('#container > .rows > .grids').forEach((grid) => {        
+    document.querySelectorAll('#container > .rows > .grids').forEach((grid) => { 
+        let brightnessOffset = 100;             
         grid.addEventListener('mouseover', () => {
-        grid.style.backgroundColor = `rgb(${firstColor}, ${secondColor}, ${thirdColor})`;
+            let firstColor = Math.floor(Math.random() * 254);
+            let secondColor = Math.floor(Math.random() * 254);
+            let thirdColor = Math.floor(Math.random() * 254);
+            
+            grid.style.backgroundColor = `rgb(${firstColor}, ${secondColor}, ${thirdColor})`;
+            grid.style.filter = `brightness(${brightnessOffset}%)`;
+            brightnessOffset -= 10;
         })
     })
 })
