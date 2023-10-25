@@ -4,7 +4,7 @@ let containerSize;
 
 button.addEventListener('click', () => {
     do {
-        containerSize = parseInt(prompt('Please enter a number in range (0, 100>'));
+        containerSize = parseInt(prompt("Enter a number in range (0, 100>"));
     }while(containerSize <= 0 || containerSize > 100 || isNaN(containerSize) === true);
 
     container.innerHTML = "";
