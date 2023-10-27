@@ -15,37 +15,36 @@ function generateGrids(length) {
     }
 }
 
-function changeGridColorOnMouseOver() {
-    document.querySelectorAll('#container > .rows > .grids').forEach((grid) => { 
-        let brightnessOffset = 100;          
-        grid.addEventListener('mouseover', () => {
-            let firstColor = Math.floor(Math.random() * 254);
-            let secondColor = Math.floor(Math.random() * 254);
-            let thirdColor = Math.floor(Math.random() * 254);               
-            grid.style.backgroundColor = `rgb(${firstColor}, ${secondColor}, ${thirdColor})`;
-            grid.style.filter = `brightness(${brightnessOffset}%)`;
-            brightnessOffset -= 10;
-        })
-    })
+function changeColor() {
+    let firstColor = Math.floor(Math.random() * 256);
+    let secondColor = Math.floor(Math.random() * 256);
+    let thirdColor = Math.floor(Math.random() * 256);
+    this.style.backgroundColor = `rgb(${firstColor}, ${secondColor}, ${thirdColor})`;
 }
 
-const defaultContainer = generateGrids(10);
-changeGridColorOnMouseOver();
+function startDrawing(e) {
+    e.preventDefault();
+    const grids = document.querySelectorAll('.grids');
+    grids.forEach(grid => grid.addEventListener('mouseover', changeColor))
+}
+function stopDrawing(e) {
+    e.preventDefault();
+    const grids = document.querySelectorAll('.grids');
+    grids.forEach(grid => grid.removeEventListener('mouseover', changeColor));
+}
 
-button.addEventListener('click', () => {
+function createNewBoard() {
     do {
         containerSize = parseInt(prompt("Enter a number in range (0, 100>"));
     }while(containerSize <= 0 || containerSize > 100 || isNaN(containerSize) === true);
-
     container.innerHTML = "";
-
     generateGrids(containerSize);
+}
 
-    container.style.maxWidth = '700px';
-    container.style.maxWidth = '700px';
-    
-    changeGridColorOnMouseOver();
-})
+const defaultContainer = generateGrids(10);
+container.addEventListener('mousedown', startDrawing);
+window.addEventListener('mouseup', stopDrawing);
+button.addEventListener('click', createNewBoard);
 
 
 
